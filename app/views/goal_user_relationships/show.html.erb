@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Goal user relationship #<%= @the_goal_user_relationship.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/goal_user_relationships">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_goal_user_relationship/<%= @the_goal_user_relationship.id %>">
+          Delete goal user relationship
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Goal
+      </dt>
+      <dd>
+        <%= @the_goal_user_relationship.goal_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_goal_user_relationship.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal_user_relationship.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal_user_relationship.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit goal user relationship
+    </h2>
+
+    <form action="/modify_goal_user_relationship/<%= @the_goal_user_relationship.id %>"  method="post" >
+      <div>
+        <label for="goal_id_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_id_box" name="query_goal_id" value="<%= @the_goal_user_relationship.goal_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_goal_user_relationship.user_id %>">
+      </div>
+
+      <button>
+        Update goal user relationship
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

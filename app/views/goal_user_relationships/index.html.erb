@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all goal user relationships
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new goal user relationship
+    </h2>
+
+    <form action="/insert_goal_user_relationship" method="post">
+      <div>
+        <label for="goal_id_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_id_box" name="query_goal_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create goal user relationship
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Goal
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_goal_user_relationships.each do |a_goal_user_relationship| %>
+      <tr>
+        <td>
+          <%= a_goal_user_relationship.id %>
+        </td>
+
+        <td>
+          <%= a_goal_user_relationship.goal_id %>
+        </td>
+
+        <td>
+          <%= a_goal_user_relationship.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_goal_user_relationship.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_goal_user_relationship.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/goal_user_relationships/<%= a_goal_user_relationship.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

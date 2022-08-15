@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Goal progress #<%= @the_goal_progress.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/goal_progresses">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_goal_progress/<%= @the_goal_progress.id %>">
+          Delete goal progress
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Goal participant
+      </dt>
+      <dd>
+        <%= @the_goal_progress.goal_participant_id %>
+      </dd>
+
+      <dt>
+        Date time
+      </dt>
+      <dd>
+        <%= @the_goal_progress.date_time %>
+      </dd>
+
+      <dt>
+        Goal
+      </dt>
+      <dd>
+        <%= @the_goal_progress.goal_id %>
+      </dd>
+
+      <dt>
+        Goal progress status
+      </dt>
+      <dd>
+        <%= @the_goal_progress.goal_progress_status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal_progress.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal_progress.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit goal progress
+    </h2>
+
+    <form action="/modify_goal_progress/<%= @the_goal_progress.id %>"  method="post" >
+      <div>
+        <label for="goal_participant_id_box">
+          Goal participant
+        </label>
+
+        <input type="text" id="goal_participant_id_box" name="query_goal_participant_id" value="<%= @the_goal_progress.goal_participant_id %>">
+      </div>
+
+      <div>
+        <label for="date_time_box">
+          Date time
+        </label>
+
+        <input type="text" id="date_time_box" name="query_date_time" value="<%= @the_goal_progress.date_time %>">
+      </div>
+
+      <div>
+        <label for="goal_id_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_id_box" name="query_goal_id" value="<%= @the_goal_progress.goal_id %>">
+      </div>
+
+      <div>
+        <label for="goal_progress_status_box">
+          Goal progress status
+        </label>
+
+        <input type="text" id="goal_progress_status_box" name="query_goal_progress_status" value="<%= @the_goal_progress.goal_progress_status %>">
+      </div>
+
+      <button>
+        Update goal progress
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

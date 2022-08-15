@@ -1,0 +1,134 @@
+<div>
+  <div>
+    <h1>
+      List of all goal progresses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new goal progress
+    </h2>
+
+    <form action="/insert_goal_progress" method="post">
+      <div>
+        <label for="goal_participant_id_box">
+          Goal participant
+        </label>
+
+        <input type="text" id="goal_participant_id_box" name="query_goal_participant_id">
+      </div>
+
+      <div>
+        <label for="date_time_box">
+          Date time
+        </label>
+
+        <input type="text" id="date_time_box" name="query_date_time">
+      </div>
+
+      <div>
+        <label for="goal_id_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_id_box" name="query_goal_id">
+      </div>
+
+      <div>
+        <label for="goal_progress_status_box">
+          Goal progress status
+        </label>
+
+        <input type="text" id="goal_progress_status_box" name="query_goal_progress_status">
+      </div>
+
+      <button>
+        Create goal progress
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Goal participant
+        </th>
+
+        <th>
+          Date time
+        </th>
+
+        <th>
+          Goal
+        </th>
+
+        <th>
+          Goal progress status
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_goal_progresses.each do |a_goal_progress| %>
+      <tr>
+        <td>
+          <%= a_goal_progress.id %>
+        </td>
+
+        <td>
+          <%= a_goal_progress.goal_participant_id %>
+        </td>
+
+        <td>
+          <%= a_goal_progress.date_time %>
+        </td>
+
+        <td>
+          <%= a_goal_progress.goal_id %>
+        </td>
+
+        <td>
+          <%= a_goal_progress.goal_progress_status %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_goal_progress.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_goal_progress.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/goal_progresses/<%= a_goal_progress.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

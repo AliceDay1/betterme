@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_231457) do
+ActiveRecord::Schema.define(version: 2022_08_15_172222) do
+
+  create_table "goal_progresses", force: :cascade do |t|
+    t.integer "goal_participant_id"
+    t.string "date_time"
+    t.integer "goal_id"
+    t.string "goal_progress_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goal_user_relationships", force: :cascade do |t|
+    t.integer "goal_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "goal"
+    t.integer "creator_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "length"
+    t.integer "bet_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text "body"
+    t.string "status", default: "not_yet_started"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

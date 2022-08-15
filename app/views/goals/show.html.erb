@@ -1,0 +1,148 @@
+<div>
+  <div>
+    <h1>
+      Goal #<%= @the_goal.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/goals">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_goal/<%= @the_goal.id %>">
+          Delete goal
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Goal
+      </dt>
+      <dd>
+        <%= @the_goal.goal %>
+      </dd>
+
+      <dt>
+        Creator
+      </dt>
+      <dd>
+        <%= @the_goal.creator_id %>
+      </dd>
+
+      <dt>
+        Start date
+      </dt>
+      <dd>
+        <%= @the_goal.start_date %>
+      </dd>
+
+      <dt>
+        End date
+      </dt>
+      <dd>
+        <%= @the_goal.end_date %>
+      </dd>
+
+      <dt>
+        Length
+      </dt>
+      <dd>
+        <%= @the_goal.length %>
+      </dd>
+
+      <dt>
+        Bet amount
+      </dt>
+      <dd>
+        <%= @the_goal.bet_amount %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_goal.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit goal
+    </h2>
+
+    <form action="/modify_goal/<%= @the_goal.id %>"  method="post" >
+      <div>
+        <label for="goal_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_box" name="query_goal" value="<%= @the_goal.goal %>">
+      </div>
+
+      <div>
+        <label for="creator_id_box">
+          Creator
+        </label>
+
+        <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_goal.creator_id %>">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date"
+         value="<%= @the_goal.start_date %>">
+      </div>
+
+      <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date"
+         value="<%= @the_goal.end_date %>">
+      </div>
+
+      <div>
+        <label for="length_box">
+          Length
+        </label>
+
+        <input type="text" id="length_box" name="query_length" value="<%= @the_goal.length %>">
+      </div>
+
+      <div>
+        <label for="bet_amount_box">
+          Bet amount
+        </label>
+
+        <input type="text" id="bet_amount_box" name="query_bet_amount" value="<%= @the_goal.bet_amount %>">
+      </div>
+
+      <button>
+        Update goal
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

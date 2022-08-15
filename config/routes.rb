@@ -2,6 +2,82 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Goal progress resource:
+
+  # CREATE
+  post("/insert_goal_progress", { :controller => "goal_progresses", :action => "create" })
+          
+  # READ
+  get("/goal_progresses", { :controller => "goal_progresses", :action => "index" })
+  
+  get("/goal_progresses/:path_id", { :controller => "goal_progresses", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_goal_progress/:path_id", { :controller => "goal_progresses", :action => "update" })
+  
+  # DELETE
+  get("/delete_goal_progress/:path_id", { :controller => "goal_progresses", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Goal user relationship resource:
+
+  # CREATE
+  post("/insert_goal_user_relationship", { :controller => "goal_user_relationships", :action => "create" })
+          
+  # READ
+  get("/goal_user_relationships", { :controller => "goal_user_relationships", :action => "index" })
+  
+  get("/goal_user_relationships/:path_id", { :controller => "goal_user_relationships", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_goal_user_relationship/:path_id", { :controller => "goal_user_relationships", :action => "update" })
+  
+  # DELETE
+  get("/delete_goal_user_relationship/:path_id", { :controller => "goal_user_relationships", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Goal resource:
+
+  # CREATE
+  post("/insert_goal", { :controller => "goals", :action => "create" })
+          
+  # READ
+  get("/goals", { :controller => "goals", :action => "index" })
+  
+  get("/goals/:path_id", { :controller => "goals", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_goal/:path_id", { :controller => "goals", :action => "update" })
+  
+  # DELETE
+  get("/delete_goal/:path_id", { :controller => "goals", :action => "destroy" })
+
+  #------------------------------
+
+  # Routes for the Task resource:
+
+  # CREATE
+  post("/insert_task", { :controller => "tasks", :action => "create" })
+          
+  # READ
+  get("/tasks", { :controller => "tasks", :action => "index" })
+  
+  get("/tasks/:path_id", { :controller => "tasks", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_task/:path_id", { :controller => "tasks", :action => "update" })
+  
+  # DELETE
+  get("/delete_task/:path_id", { :controller => "tasks", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM
