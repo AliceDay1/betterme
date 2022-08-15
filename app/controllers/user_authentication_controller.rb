@@ -76,6 +76,7 @@ class UserAuthenticationController < ApplicationController
     @current_user.destroy
     reset_session
     
+    
     redirect_to("/", { :notice => "User account cancelled" })
   end
  

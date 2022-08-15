@@ -17,4 +17,8 @@ class Goal < ApplicationRecord
   has_many(:goal_progresses, { :class_name => "GoalProgress", :foreign_key => "goal_id", :dependent => :destroy })
   belongs_to(:creator, { :required => true, :class_name => "User", :foreign_key => "creator_id" })
   has_many(:participants, { :through => :goal_user_relationships, :source => :participant })
+
+  validates :body, :presence => true
+  validates :status, :presence =>true
+  validates :user, :presence => true
 end

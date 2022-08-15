@@ -18,4 +18,6 @@ class User < ApplicationRecord
 
   has_many(:goals, { :class_name => "Goal", :foreign_key => "creator_id", :dependent => :destroy })
   has_many(:participated_goals, { :through => :user_to_goal_relationship_participation, :source => :goal })
+
+  
 end
