@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def index
-    matching_goals = Goal.all
+    matching_goals = Goal.all.order(:start_date => :asc)
 
     @list_of_goals = matching_goals.order({ :created_at => :desc })
 
@@ -21,17 +21,19 @@ class GoalsController < ApplicationController
     the_goal = Goal.new
     the_goal.goal = params.fetch("query_goal")
     the_goal.creator_id = params.fetch("query_creator_id")
+    # the_goal.creator_id = session:[:user_id]
     the_goal.start_date = params.fetch("query_start_date")
-    the_goal.end_date = params.fetch("query_end_date")
+    # the_goal.end_date = params.fetch("query_end_date")
     the_goal.length = params.fetch("query_length")
     the_goal.bet_amount = params.fetch("query_bet_amount")
 
     if the_goal.valid?
       the_goal.save
       redirect_to("/goals", { :notice => "Goal created successfully." })
-    else
-      redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
     end
+    # else
+    #   redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
+    # end
   end
 
   def update

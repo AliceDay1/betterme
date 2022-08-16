@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
 
-
   # Routes for the Goal progress resource:
 
+  get("/", { :controller => "goals", :action => "index" })
   # CREATE
   post("/insert_goal_progress", { :controller => "goal_progresses", :action => "create" })
           

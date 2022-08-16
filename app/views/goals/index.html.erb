@@ -39,13 +39,13 @@
         <input type="datetime-local" id="start_date_box" name="query_start_date">
       </div>
 
-      <div>
+      <%# <div>
         <label for="end_date_box">
           End date
         </label>
 
         <input type="datetime-local" id="end_date_box" name="query_end_date">
-      </div>
+      </div> %>
 
       <div>
         <label for="length_box">
@@ -90,10 +90,10 @@
         <th>
           Start date
         </th>
-
+<%# 
         <th>
           End date
-        </th>
+        </th> %>
 
         <th>
           Length
@@ -103,13 +103,13 @@
           Bet amount
         </th>
 
-        <th>
+        <%# <th>
           Created at
         </th>
 
         <th>
           Updated at
-        </th>
+        </th> %>
 
         <th>
         </th>
@@ -133,9 +133,9 @@
           <%= a_goal.start_date %>
         </td>
 
-        <td>
+        <%# <td>
           <%= a_goal.end_date %>
-        </td>
+        </td> %>
 
         <td>
           <%= a_goal.length %>
@@ -145,12 +145,12 @@
           <%= a_goal.bet_amount %>
         </td>
 
-        <td>
+        <%# <td>
           <%= time_ago_in_words(a_goal.created_at) %> ago
-        </td>
+        <%# </td>
         <td>
-          <%= time_ago_in_words(a_goal.updated_at) %> ago
-        </td>
+          <%# <%= time_ago_in_words(a_goal.updated_at) %> ago
+        </td>  
 
         <td>
           <a href="/goals/<%= a_goal.id %>">
