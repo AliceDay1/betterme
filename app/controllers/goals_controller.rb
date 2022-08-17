@@ -30,10 +30,9 @@ class GoalsController < ApplicationController
     if the_goal.valid?
       the_goal.save
       redirect_to("/goals", { :notice => "Goal created successfully." })
-    end
-    # else
-    #   redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
-    # end
+    else
+    redirect_to("/goals", { :alert => the_goal.errors.full_messages.to_sentence })
+     end
   end
 
   def update

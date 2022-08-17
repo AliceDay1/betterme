@@ -18,7 +18,7 @@ class Goal < ApplicationRecord
   belongs_to(:creator, { :required => true, :class_name => "User", :foreign_key => "creator_id" })
   has_many(:participants, { :through => :goal_user_relationships, :source => :participant })
 
-  validates :body, :presence => true
-  validates :status, :presence =>true
-  validates :user, :presence => true
+  # validates :body, :presence => true
+  # validates :status, :presence =>true
+  validates :creator_id, :presence => true
 end

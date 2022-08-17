@@ -68,6 +68,22 @@
         <%= time_ago_in_words(@the_goal.created_at) %> ago
       </dd>
 
+
+
+      
+      <dt>
+        Participants in this goal
+      </dt>
+      <dd>
+        <% @the_goal.participants.each do |participant| %>
+         <%= participant.email %>
+         
+        <% end %> 
+      </dd>
+
+
+
+
       <dt>
         Updated at
       </dt>
@@ -79,6 +95,29 @@
 </div>
 
 <hr>
+
+<div>
+ <h2>Update Your Progress </h2>
+ <form action=""  method="post" >
+  <label for="date"> Date </label>
+  <input type="date" id="date" >
+  <label for="progress"> Progress </label>
+  <select name="status" id="progress" >
+  <option hidden disabled selected value> -- select an option -- </option>
+  <option value="Complete">Complete</option>
+  <option value="Miss">Miss</option>
+  
+
+</select>
+<button>
+        Update progress for my goal
+      </button>
+
+  <%# <input type="date" > %>
+
+</form>
+</div>
+
 
 
 <div>
