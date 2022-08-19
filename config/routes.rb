@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Routes for the Goal progress resource:
 
   get("/", { :controller => "goals", :action => "index" })
+
+
   # CREATE
   post("/insert_goal_progress", { :controller => "goal_progresses", :action => "create" })
           
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   
   # UPDATE
   
-  post("/modify_goal_progress/:path_id", { :controller => "goal_progresses", :action => "update" })
+  get("/modify_goal_progress/:path_id", { :controller => "goal_progresses", :action => "update" })
   
   # DELETE
   get("/delete_goal_progress/:path_id", { :controller => "goal_progresses", :action => "destroy" })
@@ -46,7 +48,7 @@ Rails.application.routes.draw do
   post("/insert_goal", { :controller => "goals", :action => "create" })
           
   # READ
-  get("/goals", { :controller => "goals", :action => "index" })
+  get("/goals", { :controller => "goals", :action => "list" })
   
   get("/goals/:path_id", { :controller => "goals", :action => "show" })
   

@@ -1,22 +1,10 @@
 <div>
   <div>
     <h1>
-      Goal #<%= @the_goal.id %> details
+      Goal '<%= @the_goal.goal%>' details
     </h1>
 
-    <div>
-      <div>
-        <a href="/goals">
-          Go back
-        </a>
-      </div>
 
-      <div>
-        <a href="/delete_goal/<%= @the_goal.id %>">
-          Delete goal
-        </a>
-      </div>
-    </div>
 
     <dl>
       <dt>
@@ -26,13 +14,7 @@
         <%= @the_goal.goal %>
       </dd>
 
-      <dt>
-        Creator
-      </dt>
-      <dd>
-        <%= @the_goal.creator_id %>
-      </dd>
-
+    
       <dt>
         Start date
       </dt>
@@ -44,7 +26,7 @@
         End date
       </dt>
       <dd>
-        <%= @the_goal.end_date %>
+        <%= @the_goal.start_date + @the_goal.length.days %>
       </dd>
 
       <dt>
@@ -70,7 +52,7 @@
 
 
 
-      
+
       <dt>
         Participants in this goal
       </dt>
@@ -93,8 +75,38 @@
     </dl>
   </div>
 </div>
+<div>
+      <div>
+        <a href="/goals">
+          Go back
+        </a>
+      </div>
+
+    <%# <div>
+        <a href="/modify_goal/<%= @the_goal.id %>
+         
+        <%# </a>
+      </div>
+    </div>  %>
+
+
+
+      <div>
+        <a href="/delete_goal/<%= @the_goal.id %>">
+          Delete goal
+        </a>
+      </div>
+    </div>
+
+
 
 <hr>
+
+  <% the_id = session[:user_id] %>
+
+    <% if GoalUserRelationship.where(:user_id => the_id).where(:goal_id =>@the_goal.id).at(0) != nil %>
+
+
 
 <div>
  <h2>Update Your Progress </h2>
@@ -110,78 +122,144 @@
 
 </select>
 <button>
-        Update progress for my goal
+<a href="/goals/<%= @the_goal.id %>">
+        Update progress for my goal </a>
       </button>
 
   <%# <input type="date" > %>
 
 </form>
 </div>
-
-
-
+    
 <div>
   <div>
-    <h2>
-      Edit goal
-    </h2>
-
-    <form action="/modify_goal/<%= @the_goal.id %>"  method="post" >
-      <div>
-        <label for="goal_box">
-          Goal
-        </label>
-
-        <input type="text" id="goal_box" name="query_goal" value="<%= @the_goal.goal %>">
-      </div>
-
-      <div>
-        <label for="creator_id_box">
-          Creator
-        </label>
-
-        <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_goal.creator_id %>">
-      </div>
-
-      <div>
-        <label for="start_date_box">
-          Start date
-        </label>
-
-        <input type="datetime-local" id="start_date_box" name="query_start_date"
-         value="<%= @the_goal.start_date %>">
-      </div>
-
-      <div>
-        <label for="end_date_box">
-          End date
-        </label>
-
-        <input type="datetime-local" id="end_date_box" name="query_end_date"
-         value="<%= @the_goal.end_date %>">
-      </div>
-
-      <div>
-        <label for="length_box">
-          Length
-        </label>
-
-        <input type="text" id="length_box" name="query_length" value="<%= @the_goal.length %>">
-      </div>
-
-      <div>
-        <label for="bet_amount_box">
-          Bet amount
-        </label>
-
-        <input type="text" id="bet_amount_box" name="query_bet_amount" value="<%= @the_goal.bet_amount %>">
-      </div>
-
-      <button>
-        Update goal
-      </button>
-    </form>
+    <h3>
+      Goal Progress Tracker (Working progress, coming soon)
+    </h3>
   </div>
 </div>
 
 <hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+      
+        <th>
+        Participants
+        </th>
+
+        
+         <th>
+          date
+        </th>
+
+
+        <th>
+          Goal
+        </th>
+
+        <%# <th>
+          End date
+        </th> %> 
+
+        <th>
+          Status
+        </th>
+
+        <th>
+         Earned
+        </th>
+      </tr>
+
+ 
+   <tr>
+      
+        <th>
+        Alice 
+        </th>
+
+        
+         <th>
+          8/22
+        </th>
+
+
+        <th>
+          End of Summer Yoga Challenge
+        </th>
+
+        <%# <th>
+          End date
+        </th> %> 
+
+        <th>
+          Complete
+        </th>
+
+        <th>
+         $100
+        </th>
+      </tr>
+
+<tr>
+      
+        <th>
+        Alice 
+        </th>
+
+        
+         <th>
+          8/23
+        </th>
+
+
+        <th>
+          End of Summer Yoga Challenge
+        </th>
+
+        <%# <th>
+          End date
+        </th> %> 
+
+        <th>
+          Complete
+        </th>
+
+        <th>
+         $100
+        </th>
+      </tr>
+      <tr>
+      
+        <th>
+        Alice 
+        </th>
+
+        
+         <th>
+          8/22
+        </th>
+
+
+        <th>
+          End of Summer Yoga Challenge
+        </th>
+
+        <%# <th>
+          End date
+        </th> %> 
+
+        <th>
+          Miss
+        </th>
+
+        <th>
+         $0
+        </th>
+      </tr>
+
+
+<%else%>
+You did not sign up for this goal. Go back to home page and explore other challenges catch your eye! 
+    <% end%>

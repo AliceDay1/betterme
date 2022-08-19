@@ -1,0 +1,175 @@
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new goal
+    </h2>
+
+    <form action="/insert_goal" method="post">
+      <div>
+        <label for="goal_box">
+          Goal
+        </label>
+
+        <input type="text" id="goal_box" name="query_goal">
+      </div>
+
+      <div>
+        <%# <label for="creator_id_box">
+          Creator
+        </label> %>
+
+        <input type="hidden" id="creator_id_box" name="query_creator_id" value="<%= session[:user_id]%>">
+      </div>
+
+      <div>
+        <label for="start_date_box">
+          Start date
+        </label>
+
+        <input type="datetime-local" id="start_date_box" name="query_start_date">
+      </div>
+
+      <%# <div>
+        <label for="end_date_box">
+          End date
+        </label>
+
+        <input type="datetime-local" id="end_date_box" name="query_end_date">
+      </div> %>
+
+      <div>
+        <label for="length_box">
+          Length
+        </label>
+
+        <input type="text" id="length_box" name="query_length">
+      </div>
+
+      <div>
+        <label for="bet_amount_box">
+          Bet amount
+        </label>
+
+        <input type="text" id="bet_amount_box" name="query_bet_amount">
+      </div>
+
+      <button>
+        Create goal
+      </button>
+    </form>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h1>
+      List of all goals
+    </h1>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="3">
+      <tr>
+        <%# <th>
+          ID
+        </th> %>
+
+        <th>
+          Goal
+        </th>
+
+        
+         <th>
+          Start date
+        </th>
+
+
+        <th>
+          Creator
+        </th>
+
+        <%# <th>
+          End date
+        </th> %> 
+
+        <th>
+          Length (days)
+        </th>
+
+        <th>
+          Bet amount
+        </th>
+
+        <%# <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th> %>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_goals.each do |a_goal| %>
+      <tr>
+        <%# <td> %>
+          <%# <%= a_goal.id %> 
+        <%# </td> %>
+
+        <td>
+          <%= a_goal.goal %>
+        </td>
+
+      <td>
+          <%= a_goal.start_date.to_date %>
+        </td>  
+
+
+        <td>
+          <%= a_goal.creator.email %>
+        </td>
+
+
+    
+        <%# <td> %>
+          <%# a_goal.end_date %>
+        <%# </td> %>
+
+        <td>
+          <%= a_goal.length %>
+        </td>
+
+        <td>
+          <%= number_to_currency a_goal.bet_amount %>
+        </td>
+
+        <%# <td>
+          <%= time_ago_in_words(a_goal.created_at) %> 
+        <%# </td>
+        <td>
+          <%# <%= time_ago_in_words(a_goal.updated_at) %> 
+        </td>  
+
+        <td>
+          <a href="/goals/<%= a_goal.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<%# <style>
+  .section-11{
+    background-image: url(https://strategicdiscipline.positioningsystems.com/hs-fs/hubfs/images/Habits%20ladder.jpg?width=386&name=Habits%20ladder.jpghttps://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png);
+  }
+</style> %>

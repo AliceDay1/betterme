@@ -7,6 +7,18 @@ class GoalsController < ApplicationController
     render({ :template => "goals/index.html.erb" })
   end
 
+
+  def list
+    matching_goals = Goal.all.order(:bet_amount => :asc)
+
+    @list_of_goals = matching_goals.order({ :bet_amount => :desc })
+    the_goal=Goal.new
+    # the_goal.start_date = params.fetch("query_start_date")
+
+    render({ :template => "goals/lists.html.erb" })
+  end
+
+
   def show
     the_id = params.fetch("path_id")
 
